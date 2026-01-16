@@ -1,13 +1,17 @@
 // User function Template for Java
 
 class Solution {
-    public static int findMean(int[] arr) {
-        int sum = 0;
-        for(int i = 0; i<arr.length; i++){
-            sum = sum+arr[i];
+    
+    public static int mean(int arr[] , int idx, int n, int sum){
+        if(idx == arr.length){
+            return  sum / n;
         }
-        
-        return sum/arr.length;
+        sum = sum + arr[idx];
+        return mean(arr,idx+1,n,sum);
+    }
+    public static int findMean(int[] arr) {
+        int n = arr.length;
+       return mean(arr,0,n,0);
         
     }
 };
