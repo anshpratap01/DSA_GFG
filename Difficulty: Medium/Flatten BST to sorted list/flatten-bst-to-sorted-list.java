@@ -17,19 +17,19 @@ class Solution {
         root.left = null;
         root.right = flattenBST(root.right);
         
-       
-        if(head  != null){
+        if(head != null){
             Node temp = head;
             while(temp.right != null){
                 temp = temp.right;
             }
-        
-        
-        temp.right = root;
-        }else {
+            temp.right = root; 
+        }else{
             head = root;
         }
-        return head;
+         return head; 
+        
+        
+        
         
     }
 }
