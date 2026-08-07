@@ -1,24 +1,60 @@
-import java.util.*;
 class Solution {
     public static ArrayList<Integer> findUnion(int a[], int b[]) {
-        // code here
-        HashMap<Integer,Integer> mp = new HashMap<>();
-        
-        for(int i = 0; i<a.length; i++){
-            mp.put(a[i],1+mp.getOrDefault(a[i],0));
-            
-        }
-        for(int i = 0; i<b.length; i++){
-            mp.put(b[i],1+mp.getOrDefault(b[i],0));
-            
-        }
-        
         ArrayList<Integer> ans = new ArrayList<>();
-        for(var e : mp.keySet()){
-            ans.add(e);
-            
+        
+        int i = 0;
+        int j = 0;
+        
+        while(i< a.length && j < b.length){
+            if(a[i] < b[j]){
+                if(ans.isEmpty() || ans.get(ans.size()-1) != a[i]){
+                    ans.add(a[i]);
+                    
+                    
+                }
+                i++;
+            }else if(a[i] > b[j]){
+                if(ans.isEmpty() || ans.get(ans.size()-1) != b[j]){
+                    ans.add(b[j]);
+                    
+                }
+                j++;
+            }else{
+                if(ans.isEmpty() || ans.get(ans.size()-1) != a[i]){
+                    ans.add(a[i]);
+
+                    
+                }
+                     i++;
+                    j++;
+            }
         }
-        Collections.sort(ans);
+            
+        while (i < a.length) {
+
+            if (ans.isEmpty() || ans.get(ans.size() - 1) != a[i])
+                ans.add(a[i]);
+
+            i++;
+        }
+
+        while (j < b.length) {
+
+            if (ans.isEmpty() || ans.get(ans.size() - 1) != b[j])
+                ans.add(b[j]);
+
+            j++;
+        }
+
+       // return ans;
+            
+            
+            
+            
+            
         return ans;
+        
+       
+        
     }
 }
