@@ -8,10 +8,12 @@ class Solution {
                     min = j;
             }
             }
+            if(min != i){
             
             int temp = arr[i];
             arr[i] = arr[min];
             arr[min] = temp;
+            }
         
         }
         
